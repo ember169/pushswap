@@ -22,8 +22,15 @@ The goal is to sort the numbers in `stack a` in ascending order with following o
 | **rrb** | rev rotate b | Shift down all elements of stack b by 1. The last element becomes the first. |
 | **rrr** | rev rotate both | `rra` and `rrb` at the same time. |
 
-### Error
-Error handling: the program displays `Error` followed by a `\n` on the standard error if arguments are not integers, exceed integer limits, or contain duplicates.
+### Error handling
+The program displays `Error` followed by a `\n` on the standard error if arguments are not integers, exceed integer limits, or contain duplicates:
+```shell
+$> ./push_swap 0 one 2 3
+Error
+$>
+```
+<br>
+If no parameters are specified, the program must not display anything and should return to the prompt.
 
 ### Global flowchart
 _Building..._
@@ -40,8 +47,8 @@ Run `make` in the root directory to generate the `push_swap` binary.
 `ARG="1 82 42 91 5 63"; ./pushswap $ARG`<br><br>
 To count number of operations:<br>
 `ARG="1 82 42 91 5 63"; ./pushswap $ARG wc -l`<br><br>
-To verify if the stack is correctly sorted using the provided checker:<br>
-`ARG="1 82 42 91 5 63"; ./pushswap $ARG | ./checker_OS $ARG` to use the provided checker (outputs `OK` / `KO`).
+To verify if the stack is correctly sorted using the provided checker (outputs `OK` / `KO`):<br>
+`ARG="1 82 42 91 5 63"; ./pushswap $ARG | ./checker_OS $ARG`
 
 # Resources
 
