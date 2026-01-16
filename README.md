@@ -4,7 +4,7 @@ _This project has been created as part of the 42 curriculum by lgervet_
 _[Subject (pdf)](https://cdn.intra.42.fr/pdf/pdf/192339/en.subject.pdf)_
 
 ## Description
-Provided two stacks named `stack a` (a random number of unique negative and/or positive integers) and `stack b` (empty): sort data in a stack using a limited set of instructions, aiming to achieve the lowest possible number of actions.<br><br>
+Provided two stacks named `stack a` (a random number of unique negative and/or positive integers) and `stack b` (empty): sort data in a stack using a limited set of instructions, aiming to achieve the lowest possible number of actions.
 
 ### Rules
 The goal is to sort the numbers in `stack a` in ascending order with following operations:
@@ -37,9 +37,9 @@ _Building..._
 Run `make` in the root directory to generate the `push_swap` binary.
 
 ### Execution
-`ARG="1 82 42 91 5 63"; ./pushswap $ARG` 
+`ARG="1 82 42 91 5 63"; ./pushswap $ARG`<br><br>
 To count number of operations:<br>
-`ARG="1 82 42 91 5 63"; ./pushswap $ARG wc -l`<br>
+`ARG="1 82 42 91 5 63"; ./pushswap $ARG wc -l`<br><br>
 To verify if the stack is correctly sorted using the provided checker:<br>
 `ARG="1 82 42 91 5 63"; ./pushswap $ARG | ./checker_OS $ARG` to use the provided checker (outputs `OK` / `KO`).
 
@@ -50,4 +50,3 @@ _Building..._
 
 ## AI Usage (Gemini 3)
 - Markdown structuring
-_Building..._
