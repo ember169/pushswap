@@ -53,7 +53,9 @@ To verify if the stack is correctly sorted using the provided checker (outputs `
 # Resources
 
 ## Documentation
-_Building..._
+- [Sorting algorithms, Geeksforgeeks, 2025](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
+- [Analysis of Algorithms, Geeksforgeeks, 2025](https://www.geeksforgeeks.org/dsa/analysis-of-algorithms/)
+- [Asymptomatic analysis, Geeksforgeeks, 2025](https://www.geeksforgeeks.org/dsa/analysis-of-algorithms/)
 
 ## AI Usage (Gemini 3)
-- Markdown structuring
+- Markdown and information structuring for README.md
