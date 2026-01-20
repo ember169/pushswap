@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 11:35:43 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/20 15:27:12 by lgervet          ###   ########.fr       */
+/*   Created: 2026/01/20 15:22:54 by lgervet           #+#    #+#             */
+/*   Updated: 2026/01/20 15:28:11 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H 
+int	print_err(char	*message)
+{
+	int	i;
 
-int	print_err(char	*message);
-
-#endif
+	i = 0;
+	i += write(2, &message, ft_strlen(message));
+	return (i);
+}
