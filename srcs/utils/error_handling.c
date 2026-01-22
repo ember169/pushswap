@@ -6,15 +6,14 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 15:22:54 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/20 15:28:11 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/22 16:28:47 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	print_err(char	*message)
-{
-	int	i;
+#include "../includes/pushswap.h"
 
-	i = 0;
-	i += write(2, &message, ft_strlen(message));
-	return (i);
+void	throw_error(void)
+{
+	write(2, ERRMSG, ft_strlen(ERRMSG));
+	return ;
 }

@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 11:35:43 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/22 16:25:27 by lgervet          ###   ########.fr       */
+/*   Created: 2026/01/22 14:40:33 by lgervet           #+#    #+#             */
+/*   Updated: 2026/01/22 16:29:03 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H 
+#include "../../includes/pushswap.h"
 
-# define ERRMSG ("Error\n")
+char	**parse_arg(char *arg)
+{
+	size_t	i;
 
-# include "libft/includes/libft.h" 
-# include <unistd.h>
-
-void	throw_error();
-int		is_sorted(int num[]);
-char	**parse_arg(char *arg);
-
-#endif
+	i = 0;
+	while (arg[i])
+	{
+		if (!(arg[i] >= '0' && arg[i] <= '9') \
+			&& !(arg[i] == ' ' || arg[i] == '\t'))
+			return (throw_error(), NULL);
+		i++;
+	}
+	return (ft_split(arg, ' '));
+}
