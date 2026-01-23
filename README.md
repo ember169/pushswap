@@ -59,3 +59,4 @@ To verify if the stack is correctly sorted using the provided checker (outputs `
 
 ## AI Usage (Gemini 3)
 - Markdown and information structuring for README.md
+- Asked to find caveats and unconsidered edge-cases (i.e: forgot about negative integers in the parser)
