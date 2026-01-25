@@ -6,60 +6,67 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 14:40:33 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/24 14:55:59 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/25 17:02:35 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-/**
- * @brief filters and parse a single argument string
- * @param *arg  argument string to parse
- * @param *arr  array to free in case of error
- * @param **str str to free in case of error
- * @return pointer to argument converted as int
- */
-int	parse_argument(char *arg, int *arr, char **str)
+int	validate_chars(char *s)
 {
-	size_t	i;
-	int		ret;
+	int	i;
 
-	ft_printf("[ ] Checking argument \"%s\"...\n", arg);
 	i = 0;
-	while (arg[i])
+	while (s[i])
 	{
-		if (!(arg[i] >= '0' && arg[i] <= '9')
-			&& !(arg[i] == ' ' || arg[i] == '\t' || arg[i] == '-'))
-			throw_error(arr, str);
+		if (!(s[i] >= '0' && s[i] <= '9') \
+		&& !(s[i] == ' ' || s[i] == '\t' || s[i] == '-'))
+			return (0);
 		i++;
 	}
-	ft_printf("[ ] Argument \"%s\" considered valid.\n", arg);
-	ret = ft_atoi(arg);
-	ft_printf("[ ] Argument \"%s\" converted in <%d>.\n", arg, ret);
-	return (ret);
+	return (1);
 }
 
-/**
- * @brief splits arguments and pass them to parse_arg 1:1
- * @param *arg  argument string to parse
- * @param *arr  array to free in case of error
- * @param **str str to free in case of error
- * @return pointer to argument converted as int
- */
-int	split_argument(char *arg, int *arr)
+int	validate_int(t_base *base, int value, int current_position)
 {
-	char	**str;
-	int		ret;
+	int	i;
 
-	str = malloc(sizeof(arg));
-	if (!str)
-		return (throw_error(arr, NULL), 0);
-	str = ft_split(arg, ' ');
-	ret = 0;
-	while (*str)
+	if (value > INT_MAX || value < INT_MIN)
+		return (0);
+	i = 0;
+	while (i < current_position)
 	{
-		ret = parse_argument(*str, arr, str);
-		str++;
+		if (base->stack_a[i] == value)
+			return (0);
+		i++;
 	}
-	return (ret);
+	return (1);
+}
+
+void	fill_stack(t_base *base, int ac, char **av)
+{
+	int		i;
+	int		k;
+	int		current_pos;
+	long	value;
+
+	i = 1;
+	current_pos = 0;
+	while (i < ac)
+	{
+		k = 0;
+		base->tmp_split = ft_split(av[i], ' ');
+		while (base->tmp_split[k])
+		{
+			if (!validate_chars(base->tmp_split[k]))
+				error_exit(base);
+			value = ft_atol(base->tmp_split[k]);
+			if (!validate_int(base, value, current_pos))
+				error_exit(base);
+			base->stack_a[current_pos++] = (int)value;
+			base->size_sa++;
+		}
+		i++;
+	}
+	return ;
 }
