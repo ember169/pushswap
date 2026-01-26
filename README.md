@@ -59,4 +59,5 @@ To verify if the stack is correctly sorted using the provided checker (outputs `
 
 ## AI Usage (Gemini 3)
 - Markdown and information structuring for README.md
-- Asked to find caveats and unconsidered edge-cases (i.e: forgot about negative integers in the parser)
+- Asked to find caveats and unsupported edge-cases (i.e: forgot about negative integers in the parser)
+- Helped me find a better way to manage stacks pointers through a revamped project architecture (i.e: using a struct)

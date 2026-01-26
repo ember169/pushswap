@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:36:10 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/25 17:00:36 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/26 14:48:57 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,22 @@ int	count_args(char **av)
 
 int	main(int ac, char **av)
 {
-	t_base	*base;
 	int		arg_nb;
+	t_base	*base;
 
-	base = NULL;
 	if (ac < 2)
-		return (1);
+		return (0);
 	arg_nb = count_args(av);
 	if (arg_nb <= 0)
 		return (write(2, "Error\n", 6));
-	base->stack_a = malloc(arg_nb * sizeof(int));
-	if (!base->stack_a)
-		return (write(2, "Error\n", 6));
+	base = create_base(arg_nb);
+	if (!base)
+		error_exit(NULL);
 	fill_stack(base, ac, av);
+
+	ft_printf("[x] Stack_a:\n");
 	for (int i = 0; base->size_sa > i; i++)
-		ft_printf("%d\n", base->stack_a[i]);
+		ft_printf("   - <%d>\n", base->stack_a[i]);
 	free_base(base);
 	return (0);
 }
