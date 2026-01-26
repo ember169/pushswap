@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/16 11:33:29 by lgervet           #+#    #+#              #
-#    Updated: 2026/01/25 17:01:20 by lgervet          ###   ########.fr        #
+#    Updated: 2026/01/26 14:52:23 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,9 @@ LIBFT_NAME	= $(LIBFT_DIR)/libft.a
 SRCS_DIR    = ./srcs/
 SRCS_FILES  = \
 	push_swap.c \
-	utils/terminate.c \
 	utils/parser.c \
 	utils/sorter.c \
-	utils/utils.c
+	utils/base_manager.c
 SRCS		= $(addprefix $(SRCS_DIR), $(SRCS_FILES))
 OBJS        = $(SRCS:.c=.o)
 DEPS		= $(SRCS:.c=.d)

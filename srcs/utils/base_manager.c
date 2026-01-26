@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 11:33:09 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/26 14:48:31 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/26 14:51:05 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,11 @@ void	free_base(t_base *base)
 		free_split(base->tmp_split);
 	free(base);
 	return ;
+}
+
+void	error_exit(t_base *base)
+{
+	write(2, "Error\n", 6);
+	free_base(base);
+	exit(1);
 }
