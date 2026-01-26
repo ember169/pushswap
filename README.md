@@ -61,3 +61,5 @@ To verify if the stack is correctly sorted using the provided checker (outputs `
 - Markdown and information structuring for README.md
 - Asked to find caveats and unsupported edge-cases (i.e: forgot about negative integers in the parser)
 - Helped me find a better way to manage stacks pointers through a revamped project architecture (i.e: using a struct)
+- Found a double `free()` in an edge case I never encountered in my tests
+- Gave me a few insights on better practices overall (i.e: incentivized me to use pointer operations (`*ptr` instead of `ptr[i]`) in my parser for shorter functions and better readability)
