@@ -6,11 +6,11 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 10:44:59 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/27 11:49:57 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/29 15:00:56 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/pushswap.h"
+#include "../../includes/pushswap.h"
 
 /*
 ** _push:
@@ -30,7 +30,6 @@ static void	_push(int *src, int *dst, int src_size, int dst_size)
 	if (src_size < 0)
 		return ;
 	src_target = src[0];
-
 	i = dst_size;
 	while (i > 0)
 	{

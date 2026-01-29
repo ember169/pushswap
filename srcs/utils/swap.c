@@ -6,11 +6,11 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 10:34:56 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/27 11:49:17 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/28 10:53:25 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/pushswap.h"
+#include "../../includes/pushswap.h"
 
 static void	_swap(int *stack, int size)
 {

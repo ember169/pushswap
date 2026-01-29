@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 11:36:10 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/26 14:48:57 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/01/29 14:39:50 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,22 @@ int	count_args(char **av)
 	return (j);
 }
 
+int	is_sorted(t_base *base)
+{
+	int	i;
+
+	if (base->size_sa <= 1)
+		return (1);
+	i = 0;
+	while (i < base->size_sa - 1)
+	{
+		if (base->stack_a[i] > base->stack_a[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int ac, char **av)
 {
 	int		arg_nb;
@@ -59,10 +75,9 @@ int	main(int ac, char **av)
 	if (!base)
 		error_exit(NULL);
 	fill_stack(base, ac, av);
-
-	ft_printf("[x] Stack_a:\n");
-	for (int i = 0; base->size_sa > i; i++)
-		ft_printf("   - <%d>\n", base->stack_a[i]);
+	if (is_sorted(base))
+		return (0);
+	sort(base);
 	free_base(base);
 	return (0);
 }

@@ -1,53 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/27 10:45:17 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/27 11:20:43 by lgervet          ###   ########.fr       */
+/*   Created: 2026/01/27 10:45:59 by lgervet           #+#    #+#             */
+/*   Updated: 2026/01/28 10:53:36 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/pushswap.h"
+#include "../../includes/pushswap.h"
 
-static void	_rotate(int *stack, int size)
+static void	_rev_rotate(int *stack, int size)
 {
 	int	i;
 	int	tmp;
 
 	if (size < 2)
 		return ;
-	tmp = stack[0];
-	i = 0;
-	while (i < size - 1)
+	tmp = stack[size - 1];
+	i = size - 1;
+	while (i > 0)
 	{
-		stack[i] = stack[i + 1];
-		i++;
+		stack[i] = stack[i - 1];
+		i--;
 	}
-	stack[size - 1] = tmp;
+	stack[0] = tmp;
 	return ;
 }
 
-void	ra(t_base *base)
+void	rra(t_base *base)
 {
-	_rotate(base->stack_a, base->size_sa);
-	ft_printf("ra\n");
+	_rev_rotate(base->stack_a, base->size_sa);
+	ft_printf("rra\n");
 	return ;
 }
 
-void	rb(t_base *base)
+void	rrb(t_base *base)
 {
-	_rotate(base->stack_b, base->size_sb);
-	ft_printf("rb\n");
+	_rev_rotate(base->stack_b, base->size_sb);
+	ft_printf("rrb\n");
 	return ;
 }
 
-void	rr(t_base *base)
+void	rrr(t_base *base)
 {
-	_rotate(base->stack_a, base->size_sa);
-	_rotate(base->stack_b, base->size_sb);
-	ft_printf("rr\n");
+	_rev_rotate(base->stack_a, base->size_sa);
+	_rev_rotate(base->stack_b, base->size_sb);
+	ft_printf("rrr\n");
 	return ;
 }

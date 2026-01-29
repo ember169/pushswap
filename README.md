@@ -6,8 +6,10 @@ _[Subject (pdf)](https://cdn.intra.42.fr/pdf/pdf/192339/en.subject.pdf)_
 ## Description
 Provided two stacks named `stack a` (a random number of unique negative and/or positive integers) and `stack b` (empty): sort data in a stack using a limited set of instructions, aiming to achieve the lowest possible number of actions.
 
-### Rules
-The goal is to sort the numbers in `stack a` in ascending order with following operations:
+### Sorting strategy
+I have chosen Radix Sort for its stability and logic clarity. Since Radix does not efficiently manage negative numbers and wide value gaps, I implemented coordinate compression (uses stack's indexes instead of values) to optimize the number of bitwise passes required.
+
+### Instructions set
 | Command | Name | Description |
 |:--- |:--- |:--- |
 | **sa** | swap a | Swap the first 2 elements at the top of stack a. |
@@ -35,9 +37,6 @@ If no parameters are specified, the program must not display anything and should
 ### Global flowchart
 _Building..._
 
-### Sorting strategies
-_Building..._
-
 ## Instructions
 
 ### Compilation
@@ -56,10 +55,27 @@ To verify if the stack is correctly sorted using the provided checker (outputs `
 - [Sorting algorithms, Geeksforgeeks, 2025](https://www.geeksforgeeks.org/dsa/sorting-algorithms/)
 - [Analysis of Algorithms, Geeksforgeeks, 2025](https://www.geeksforgeeks.org/dsa/analysis-of-algorithms/)
 - [Asymptomatic analysis, Geeksforgeeks, 2025](https://www.geeksforgeeks.org/dsa/analysis-of-algorithms/)
+- [Quicksort, Insertion Sort and Radix Sort Comparison, aksakalli.github.io, 2011](https://aksakalli.github.io/2011/11/29/sorting-algorithms.html)
+- [Radix algorithm, Wikipedia](https://en.wikipedia.org/wiki/Radix_sort)
+- [Radix Sort. Number Magic?, Medium, 2021](https://medium.com/geekculture/radix-sort-number-magic-694c103e11c8)
+- [ELI5: How does Radix Sort work, Reddit, 2022](https://www.reddit.com/r/explainlikeimfive/comments/xuzyre/eli5_how_does_radix_sort_work/)
+- [Radix Sort: The Most Efficient Number Sorting, Medium, 2024](https://medium.com/@alxkm/radix-sort-the-most-efficient-number-sorting-7ea8ced044c8)
 
 ## AI Usage (Gemini 3)
-- Markdown and information structuring for README.md
-- Asked to find caveats and unsupported edge-cases (i.e: forgot about negative integers in the parser)
-- Helped me find a better way to manage stacks pointers through a revamped project architecture (i.e: using a struct)
-- Found a double `free()` in an edge case I never encountered in my tests
-- Gave me a few insights on better practices overall (i.e: incentivized me to use pointer operations (`*ptr` instead of `ptr[i]`) in my parser for shorter functions and better readability)
+
+I used AI (Gemini 3) as a technical consultant and debugging partner throughout this project. The collaboration focused on architectural decisions, logic verification, and optimizing the sorting strategy.
+
+### Architectural & Strategy Support
+- **Project Structure:** Helped transition from loose variables to a centralized `t_base` structure to manage stacks and metadata (sizes) more robustly.
+- **Algorithm Selection:** Provided a comparative analysis of sorting algorithms (Radix vs. Turk vs. Simple Sort), leading to the choice of **Radix Sort** combined with **Coordinate Compression** (indexing).
+- **Coordinate Compression Logic:** Helped refine the logic of mapping raw values (including negative integers) to a range [0 to N-1] to optimize the number of bitwise operations.
+
+### Debugging & Memory Safety
+- **Memory Management:** Assisted in diagnosing potential memory leaks and verified the cleanliness of the exit paths using `leaks` on macOS.
+- **Loop Logic:** Identified critical edge cases in stack rotations and index mapping, specifically regarding infinite loops in nested `while` conditions.
+- **Bitwise Implementation:** Clarified the implementation of bit-shifting and masking (`(num >> i) & 1`) for the Radix algorithm to ensure stable sorting between stacks A and B.
+
+### Optimization & Best Practices
+- **Performance:** Suggested the "distance to top" logic (`index <= size / 2`) for small stack optimizations (3, 4, and 5 elements) to minimize the number of instructions.
+- **Readability:** Encouraged more idiomatic C practices, such as choosing pointer arithmetic where appropriate and simplifying complex nested conditions.
+- **Testing:** Helped craft specific shell commands (using `jot`, `sort`, and `ruby`) to stress-test the program with 500+ unique random numbers on macOS.
