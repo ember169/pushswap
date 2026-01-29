@@ -35,7 +35,7 @@ $>
 If no parameters are specified, the program must not display anything and should return to the prompt.
 
 ### Global flowchart
-_Building..._
+![Simple project flowchart](https://github.com/user-attachments/assets/cc526478-25c4-444f-90d4-04250fca7f03)
 
 ## Instructions
 
